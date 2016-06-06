@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GoodsCollectCell">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="174"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topImg_my.png" translatesAutoresizingMaskIntoConstraints="NO" id="fb3-bI-fkN">
+                        <rect key="frame" x="4" y="4" width="120" height="120"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Fv-Lw-yIG">
+                        <rect key="frame" x="0.0" y="129" width="128" height="21"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="￥10.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVG-vT-2u2">
+                        <rect key="frame" x="0.0" y="150" width="128" height="21"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.99215686270000003" green="0.30588235289999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fb3-bI-fkN" secondAttribute="trailing" constant="4" id="Brn-FX-aKf"/>
+                <constraint firstItem="sVG-vT-2u2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="G1S-lg-3c2"/>
+                <constraint firstAttribute="trailing" secondItem="sVG-vT-2u2" secondAttribute="trailing" id="I2r-hW-hB0"/>
+                <constraint firstItem="fb3-bI-fkN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="N0X-Zm-uP0"/>
+                <constraint firstAttribute="bottom" secondItem="sVG-vT-2u2" secondAttribute="bottom" constant="3" id="Nf0-nS-7h2"/>
+                <constraint firstAttribute="trailing" secondItem="6Fv-Lw-yIG" secondAttribute="trailing" id="OXo-y2-uet"/>
+                <constraint firstItem="sVG-vT-2u2" firstAttribute="top" secondItem="6Fv-Lw-yIG" secondAttribute="bottom" id="W7K-vz-FhS"/>
+                <constraint firstItem="6Fv-Lw-yIG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Wih-VY-52T"/>
+                <constraint firstItem="fb3-bI-fkN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="xuF-yj-yLb"/>
+                <constraint firstAttribute="bottom" secondItem="fb3-bI-fkN" secondAttribute="bottom" constant="50" id="y1C-9d-5Jr"/>
+            </constraints>
+            <size key="customSize" width="128" height="174"/>
+            <connections>
+                <outlet property="imgView" destination="fb3-bI-fkN" id="i3E-iF-Vpb"/>
+                <outlet property="nameLab" destination="6Fv-Lw-yIG" id="zJJ-Zc-yGW"/>
+                <outlet property="priceLab" destination="sVG-vT-2u2" id="aUd-R5-3Cy"/>
+            </connections>
+            <point key="canvasLocation" x="261" y="280"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="topImg_my.png" width="320" height="127"/>
+    </resources>
+</document>
