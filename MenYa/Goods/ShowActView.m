@@ -63,10 +63,20 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
     scrollView.scrollEnabled = NO;
     [self addSubview:scrollView];
+    NSArray *subViews = scrollView.subviews;
+    for (UIView *subView in subViews) {
+        [subView removeFromSuperview];
+    }
+    
     for (NSInteger i = 0; i < count; i++) {
         NSDictionary *dic = datas[i];
-        ShowItemBtn *btn = [[ShowItemBtn alloc]initWithFrame:CGRectMake(0, i*itemH, self.width, itemH)];
+        ShowItemBtn *btn = [[ShowItemBtn alloc]initWithFrame:CGRectMake(0, count*itemH, self.width, itemH)];
 //        btn.backgroundColor = [UIColor redColor];
+        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+            btn.frame = CGRectMake(0, i*itemH, self.width, itemH);
+        } completion:^(BOOL finished) {
+            //
+        }];
         btn.tag = i+1;
         [btn setItemWithImage:dic[@"icon"] num:[dic[@"num"] integerValue]];
 //        btn.frame = CGRectMake(0, i*itemH, ITEM_W, itemH);

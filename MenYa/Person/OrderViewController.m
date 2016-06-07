@@ -71,7 +71,7 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger timeFlag;
     }
     [parameter setObject:userid forKey:@"uid"];
     __weak typeof(self) weakSelf = self;
-    [NetworkDataClient postDataWithUrl:ksmsUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [NetworkDataClient postDataWithUrl:ksendVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self success:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

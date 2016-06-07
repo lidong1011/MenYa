@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeVideoModel.h"
 typedef void(^PlayBtnCallBackBlock)(UIButton *);
 @interface HomePlayerCell : UITableViewCell
+STRONG_NONATOMIC_PROPERTY HomeVideoModel *model;
 @property (weak, nonatomic  ) IBOutlet UIImageView          *avatarImageView;
 @property (weak, nonatomic  ) IBOutlet UILabel              *titleLabel;
 @property (nonatomic, strong) IBOutlet UIButton             *playBtn;

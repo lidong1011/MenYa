@@ -70,8 +70,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 @property (nonatomic, assign) BOOL                isVolume;
 /** 是否显示controlView*/
 @property (nonatomic, assign) BOOL                isMaskShowing;
-/** 是否被用户暂停 */
-@property (nonatomic, assign) BOOL                isPauseByUser;
+
 /** 是否播放本地文件 */
 @property (nonatomic, assign) BOOL                isLocalVideo;
 /** slider上次的值 */
@@ -1117,6 +1116,18 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     } else {
         [self pause];
         if (self.state == ZFPlayerStatePlaying) { self.state = ZFPlayerStatePause;}
+    }
+}
+
+- (void)setIsPauseByUser:(BOOL)isPauseByUser
+{
+    _isPauseByUser = isPauseByUser;
+    if (isPauseByUser) {
+        [self pause];
+        if (self.state == ZFPlayerStatePlaying) { self.state = ZFPlayerStatePause;}
+    } else {
+        [self play];
+        if (self.state == ZFPlayerStatePause) { self.state = ZFPlayerStatePlaying; }
     }
 }
 

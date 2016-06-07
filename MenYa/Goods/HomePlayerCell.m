@@ -20,6 +20,13 @@
     [self.playBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)setModel:(HomeVideoModel *)model
+{
+    _model = model;
+    NSString *imgPath = [kUrl stringByAppendingPathComponent:model.ImgUrl1];
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:imgPath] placeholderImage:kDefaultImg_Z];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -67,12 +67,13 @@ ASSIGN_NONATOMIC_PROPERTY int type;
     [SVProgressHUD showWithStatus:@"登录中..."];
     
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_userName.text forKey:@"login_name"];
+    [parameter setObject:_userName.text forKey:@"phone"];
     //密码加密 MD5
     //    NSString *md5String = [NSString md5_base64:_password.text];
     [parameter setObject:_password.text forKey:@"password"];
-    [parameter setObject:@(1) forKey:@"usertype"]; //1消费 2柜长 3供应
-    [NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [parameter setObject:@"" forKey:@"code"];
+    [parameter setObject:@(0) forKey:@"remember"]; //1保存登录状态3天0不保存（默认0）
+    [NetworkDataClient postDataWithUrl:kloginUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self success:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -89,7 +90,7 @@ ASSIGN_NONATOMIC_PROPERTY int type;
     //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:dic[@"msg"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     //        [alert show];
     
-    if ([dic[@"code"] intValue]==1)
+    if ([dic[kJson_Status] intValue]==1)
     {
         [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"登录成功"];
         User *user = [[User alloc]init];
@@ -97,7 +98,7 @@ ASSIGN_NONATOMIC_PROPERTY int type;
         user.password = _password.text;
         [AccountManager shareManager].user = user;
 //        [[NSUserDefaults standardUserDefaults]setBool:_isRememb forKey:kIsRemembPsd];
-        [[NSUserDefaults standardUserDefaults]setObject:dic[@"uid"] forKey:kuserId];
+        [[NSUserDefaults standardUserDefaults]setObject:dic[kJson_Data][@"ContactId"] forKey:kuserId];
         [[NSUserDefaults standardUserDefaults]setObject:dic forKey:kUserMsg];
         {
             //            NSArray *array = self.navigationController.viewControllers;
@@ -132,7 +133,6 @@ ASSIGN_NONATOMIC_PROPERTY int type;
 }
 
 -(BOOL)isValidatePhone:(NSString *)phone {
-    
     NSString *phoneRegex = @"^1[3|4|5|7|8][0-9]\\d{8}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:phone];

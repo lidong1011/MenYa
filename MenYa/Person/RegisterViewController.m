@@ -33,21 +33,28 @@
 - (IBAction)yanZhengMaAction:(UIButton *)sender
 {
     if (![self isValidatePhone:_phoneTF.text]) {
-        [SVProgressHUD showErrorWithStatus:@"手机号码不对"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码不对"];
         return;
     }
     
     sender.enabled = NO;
     _timeInt = 60;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(returnYanCode) userInfo:nil repeats:YES];
-    
+    kSVPShowInfoText(@"获取验证码中");
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_phoneTF.text forKey:@"to"];
-    [NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [parameter setObject:_phoneTF.text forKey:@"phone"];
+    [parameter setObject:@"register" forKey:@"sign"];
+    [NetworkDataClient getDataWithUrl:ksendVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
-        [self success:JSON];
+        MyLog(@"%@",JSON);
+        NSDictionary *dic = (NSDictionary *)JSON;
+        kSVPShowInfoText(dic[@"Information"]);
+        if ([dic[@"Status"] intValue]==1) {
+            
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //
+        
     }];
 }
 
@@ -91,23 +98,17 @@
     [SVProgressHUD showWithStatus:@"注册中..."];
     
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_phoneTF.text forKey:@"tel"];
+    [parameter setObject:_phoneTF.text forKey:@"phone"];
     [parameter setObject:_paswordTF.text forKey:@"password"];
-//    [parameter setObject:_comfirePwdTF.text forKey:@"confirm_password"];
-    [parameter setObject:@(1) forKey:@"usertype"];
-    [NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
-        //
-        [self success:JSON];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //
-    }];[NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [parameter setObject:_yanZhengMTF.text forKey:@"code"];
+    [parameter setObject:@"0" forKey:@"siteId"];
+    [parameter setObject:@"0" forKey:@"channelId"];
+    [NetworkDataClient postDataWithUrl:kRegisterUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self success:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //
     }];
-    
-//    self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil];
 }
 
 #pragma mark - 注册请求返回数据
@@ -116,7 +117,7 @@
     //    [SVProgressHUD dismiss];
     NSDictionary *dic = (NSDictionary *)response;
     MyLog(@"%@",dic);
-    if ([dic[@"code"] intValue]==1)
+    if ([dic[@"Status"] intValue]==1)
     {
         [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"注册成功"];
         User *user = [[User alloc]init];

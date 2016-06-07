@@ -40,7 +40,7 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *tableViewMutAry;
 //    NSString *userid = [[NSUserDefaults standardUserDefaults]stringForKey:kuserId];
     [parameter setObject:_orderId forKey:@"orderid"];
     __weak typeof(self) weakSelf = self;
-    [NetworkDataClient postDataWithUrl:ksmsUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [NetworkDataClient getDataWithUrl:ksendVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self success:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

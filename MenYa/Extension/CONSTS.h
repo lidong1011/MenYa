@@ -94,6 +94,9 @@ alert.tag = tag; \
 #define kuserId @"userid"
 
 #define kDownloadUrl @"download"
+#define kJson_Status @"Status"
+#define kJson_Information @"Information"
+#define kJson_Data @"Data"
 #define kLogo @""
 #define kLoadingData @"努力加载中..."
 #define kGetDataSuccess @"数据获取成功"   //数据获取成功
@@ -112,7 +115,6 @@ alert.tag = tag; \
 //测试
 #define kUrl @"http://app.menyaer.com/index.php/"
 
-
 //生产
 //#define kUrl  @"csxz.jrcad.com:8080/phpmyadmin/"
 
@@ -124,19 +126,32 @@ alert.tag = tag; \
 
 
 ////////////个人中心/////////////////
-//注册
-#define kRegisterUrl  @"register.php"
+//注册 User/register
+#define kRegisterUrl  @"User/register"
 
-//登录
-#define kloginUrl  [kBaseUrl stringByAppendingString:@"login.php"]
+//登录 User/login
+#define kloginUrl  @"User/login"
 
-//验证码 sms_code.php
-#define ksmsUrl  [kUrl stringByAppendingString:@"api/sms_code.php"]
+//获取验证码 Sms/sendVerifyCode
+#define ksendVerifyCode  @"Sms/sendVerifyCode"
 
-//找回密码 find_password
-#define kfind_passwordUrl  [kBaseUrl stringByAppendingString:@"find_password.php"]
+//验证验证码 Api/Sms/checkVerifyCode
+#define kcheckVerifyCode  @"Sms/checkVerifyCode"
+
+//获取图形验证码 User/getImgCode
+#define kgetImgCode  @"User/getImgCode"
+
+//验证图形验证码 User/checkImgCode
+#define kcheckImgCode  @"User/checkImgCode "
+
+//退出登录 User/logout
+#define kuserLogout  @"User/logout"
+
+//快捷登录 User/loginQuick
+#define kloginQuick  @"User/loginQuick"
 
 
-
+//首页视频列表 Video/getList
+#define kVideogetList  @"Video/getList"
 
 #endif

@@ -17,6 +17,8 @@
 #import "UMSocial.h"
 #import "VideoCommentView.h"
 #import "ChooseSpecificationsView.h"
+#import "MJRefresh.h"
+#import "HomeVideoModel.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 STRONG_NONATOMIC_PROPERTY NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet ShowActView *showActView;
@@ -28,6 +30,8 @@ STRONG_NONATOMIC_PROPERTY KLCoverView *mask;
 ASSIGN_NONATOMIC_PROPERTY __block NSInteger zanFlag;
 STRONG_NONATOMIC_PROPERTY SharePopView *sharePopView;
 STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
+STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
+@property (nonatomic, assign) int pageNo;
 @end
 
 @implementation HomeViewController
@@ -63,6 +67,7 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
     [self.mm_drawerController setGestureCompletionBlock:^(MMDrawerController *drawerController, UIGestureRecognizer *gesture) {
         [weakSelf changePlayerState];
     }];
+    [self getListDataWithPage:1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,6 +81,68 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 //    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 }
 
+//获取列表数据
+- (void)getListDataWithPage:(int)page
+{
+    //         */
+    
+    [SVProgressHUD showWithStatus:kLoadingData maskType:SVProgressHUDMaskTypeClear];
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setObject:[NSString stringWithFormat:@"%d",_pageNo] forKey:@"page"];
+    [parameter setObject:@"5" forKey:@"size"];
+    
+    [NetworkDataClient getDataWithUrl:kVideogetList parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+        [self getDataSuccess:JSON];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        //
+    }];
+}
+
+#pragma mark - 请求返回数据
+- (void)getDataSuccess:(id)response
+{
+    //    [SVProgressHUD dismiss];
+    NSDictionary *dic = (NSDictionary *)response;
+    MyLog(@"%@",dic);
+    [self.tableView.header endRefreshing];
+    [self.tableView.footer endRefreshing];
+    if ([dic[kJson_Status] integerValue] == 1)
+    {
+        //        [SVProgressHUD showSuccessWithStatus:@"获取数据成功" ];
+        //        [SVProgressHUD showInfoWithStatus:@"" maskType:SVProgressHUDMaskTypeGradient];
+        kSVPDismiss;
+        NSArray *array = dic[kJson_Data];
+        if (array.count == 0) {
+            [_tableView.footer noticeNoMoreData];
+        }
+        for (int i = 0; i < array.count;i++)
+        {
+            NSDictionary *dataDic = array[i];
+            [_dataSource addObject:[HomeVideoModel messageWithDict:dataDic]];
+        }
+        [_tableView reloadData];
+    }
+    else
+    {
+        [SVProgressHUD showInfoWithStatus:dic[@"msg"]];
+    }
+}
+
+- (void)refreshData
+{
+    //加载数据
+    _pageNo = 1;
+    [self.tableView.footer resetNoMoreData];
+    [_dataSource removeAllObjects];
+    [self getListDataWithPage:_pageNo];
+    [self.tableView reloadData];
+}
+
+- (void)loadMore
+{
+    [self getListDataWithPage:(++_pageNo)];
+}
+
 - (void)hidesAniView
 {
     [_aniView removeFromSuperview];
@@ -84,14 +151,14 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 - (void)initData
 {
     _dataSource = [NSMutableArray array];
-    NSArray *array = @[@{@"videoUrl":@"http://www.menyaer.com/data/image/video/video.mp4",@"img":@"pic-googs-bg.jpg"},@{@"videoUrl":@"http://www.menyaer.com/data/image/video/Paintball.mp4",@"img":@"pic-googs-bg.jpg"},@{@"videoUrl":@"http://www.menyaer.com/data/image/video/coco.mp4",@"img":@"pic-googs-bg.jpg"}];
-    _dataSource = [NSMutableArray arrayWithArray:array];
+//    NSArray *array = @[@{@"videoUrl":@"http://www.menyaer.com/data/image/video/video.mp4",@"img":@"pic-googs-bg.jpg"},@{@"videoUrl":@"http://www.menyaer.com/data/image/video/Paintball.mp4",@"img":@"pic-googs-bg.jpg"},@{@"videoUrl":@"http://www.menyaer.com/data/image/video/coco.mp4",@"img":@"pic-googs-bg.jpg"}];
+//    _dataSource = [NSMutableArray arrayWithArray:array];
 }
 
 - (void)initView{
-    
-//    [self.view addSubview:self.tableView];
-//    [self.view sendSubviewToBack:_zhuView];
+    _tableView.tableFooterView = [UIView new];
+    [_tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
 //- (UITableView *)tableView
@@ -128,13 +195,13 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 
 - (void)shoppingCarts
 {
-    [self.playerView pause];
+    [self pausePlayer:YES];
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (void)leftList
 {
-    [self.playerView pause];
+    [self pausePlayer:YES];
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
@@ -143,12 +210,18 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 {
     if (self.mm_drawerController.openSide == MMDrawerSideNone)
     {
-        [self.playerView play];
+        [self pausePlayer:NO];
     }
     else
     {
-        [self.playerView pause];
+        [self pausePlayer:YES];
     }
+}
+
+#pragma mark -停止播放还是停止
+- (void)pausePlayer:(BOOL)pause
+{
+    [self.playerView setIsPauseByUser:pause];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -164,12 +237,14 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"HomePlayerCell" owner:self options:nil][0];
     }
-    NSDictionary *dic = _dataSource[indexPath.row];
-    cell.avatarImageView.image = [UIImage imageNamed:dic[@"img"]];
+    HomeVideoModel *model = _dataSource[indexPath.row];
+    
 //    __block NSIndexPath *weakIndexPath = indexPath;
 //    __block HomePlayerCell *weakCell     = cell;
     if (indexPath.row == 0)
     {
+        NSString *price = [NSString stringWithFormat:@"￥%.2f I 加入购物车",[model.SkuPrice floatValue]];
+        [_addShopCart setTitle:price forState:UIControlStateNormal];
         self.playerView = [ZFPlayerView sharedPlayerView];
         // 分辨率字典（key:分辨率名称，value：分辨率url)
         //        NSMutableDictionary *dic = @{}.mutableCopy;
@@ -177,8 +252,8 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
         //            [dic setValue:resolution.url forKey:resolution.name];
         //        }
         // 取出字典中的第一视频URL
-        NSURL *videoURL = [NSURL URLWithString:dic[@"videoUrl"]];
-        
+//        NSURL *videoURL = [NSURL URLWithString:dic[@"videoUrl"]];
+        NSURL *videoURL = [NSURL URLWithString:model.Url];
         //     设置player相关参数(需要设置imageView的tag值，此处设置的为101)
         //            [weakSelf.playerView setVideoURL:videoURL
         //                               withTableView:weakSelf.tableView
@@ -211,9 +286,14 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if (_dataSource.count == 0) {
+        return;
+    }
     CGPoint offset = scrollView.contentOffset;
     NSIndexPath *indexPath = [_tableView indexPathForRowAtPoint:offset];
-    NSDictionary *dic = _dataSource[indexPath.row];
+    HomeVideoModel *model = _dataSource[indexPath.row];
+    NSString *price = [NSString stringWithFormat:@"￥%.2f I 加入购物车",[model.SkuPrice floatValue]];
+    [_addShopCart setTitle:price forState:UIControlStateNormal];
     HomePlayerCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
     WS(weakSelf);
     
@@ -224,7 +304,7 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
     //            [dic setValue:resolution.url forKey:resolution.name];
     //        }
     // 取出字典中的第一视频URL
-    NSURL *videoURL = [NSURL URLWithString:dic[@"videoUrl"]];
+    NSURL *videoURL = [NSURL URLWithString:model.Url];
     
     //     设置player相关参数(需要设置imageView的tag值，此处设置的为101)
     //            [weakSelf.playerView setVideoURL:videoURL
@@ -312,7 +392,7 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
                     case 4:
                     {
                         //点赞
-                        
+                        [self beiginSanHua];
                         break;
                     }
                     default:
@@ -474,6 +554,45 @@ STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
         };
     }
     return _videoComment;
+}
+
+#pragma mark --点赞
+- (void)beiginSanHua{
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleAction:)];
+    //
+//    self.displayLink.frameInterval = 0.5;
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.displayLink invalidate];
+        self.displayLink = nil;
+    });
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (void)handleAction:(CADisplayLink *)displayLink{
+    
+    UIImage *image = [UIImage imageNamed:@"icon-favor"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    CGFloat scale = arc4random_uniform(60) / 40.0;
+    imageView.transform = CGAffineTransformMakeScale(scale, scale);
+    CGSize winSize = self.view.bounds.size;
+    CGFloat x = arc4random_uniform(winSize.width);
+    CGFloat y = - imageView.frame.size.height;
+    imageView.center = CGPointMake(x, y);
+    
+    [self.view addSubview:imageView];
+    [UIView animateWithDuration:arc4random_uniform(10) animations:^{
+        CGFloat toX = arc4random_uniform(winSize.width);
+        CGFloat toY = imageView.frame.size.height * 0.5 + winSize.height;
+        
+        imageView.center = CGPointMake(toX, toY);
+        imageView.transform = CGAffineTransformRotate(imageView.transform, arc4random_uniform(M_PI * 2));
+        
+        imageView.alpha = 0.5;
+    } completion:^(BOOL finished) {
+        [imageView removeFromSuperview];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

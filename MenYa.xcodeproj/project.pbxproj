@@ -60,6 +60,12 @@
 		181AD4991CFEA9FE00821795 /* btn-addcart-bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181AD4971CFEA9FE00821795 /* btn-addcart-bg@3x.png */; };
 		181AD49C1CFEB06B00821795 /* SharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181AD49B1CFEB06B00821795 /* SharePopView.m */; };
 		181AD49E1CFEB0FE00821795 /* SharePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181AD49D1CFEB0FE00821795 /* SharePopView.xib */; };
+		184DE6491D054594001A55B3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184DE6401D054594001A55B3 /* SVIndefiniteAnimatedView.m */; };
+		184DE64A1D054594001A55B3 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184DE6421D054594001A55B3 /* SVProgressAnimatedView.m */; };
+		184DE64B1D054594001A55B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 184DE6441D054594001A55B3 /* SVProgressHUD.bundle */; };
+		184DE64C1D054594001A55B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 184DE6461D054594001A55B3 /* SVProgressHUD.m */; };
+		184DE64D1D054594001A55B3 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 184DE6481D054594001A55B3 /* SVRadialGradientLayer.m */; };
+		184DE6501D056AB7001A55B3 /* HomeVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184DE64F1D056AB7001A55B3 /* HomeVideoModel.m */; };
 		1850A2D11CFFD3390079E569 /* login-bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1850A2B51CFFD3390079E569 /* login-bg@2x.jpg */; };
 		1850A2D21CFFD3390079E569 /* login-bg@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1850A2B61CFFD3390079E569 /* login-bg@3x.jpg */; };
 		1850A2D31CFFD3390079E569 /* login-bg2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1850A2B71CFFD3390079E569 /* login-bg2@2x.jpg */; };
@@ -206,9 +212,6 @@
 		201D7F271B5B9767009117E2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7E761B5B9767009117E2 /* UIScrollView+MJExtension.m */; };
 		201D7F281B5B9767009117E2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7E781B5B9767009117E2 /* UIScrollView+MJRefresh.m */; };
 		201D7F291B5B9767009117E2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7E7A1B5B9767009117E2 /* UIView+MJExtension.m */; };
-		201D7F461B5B9767009117E2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7EBB1B5B9767009117E2 /* SVIndefiniteAnimatedView.m */; };
-		201D7F471B5B9767009117E2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 201D7EBD1B5B9767009117E2 /* SVProgressHUD.bundle */; };
-		201D7F481B5B9767009117E2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7EBF1B5B9767009117E2 /* SVProgressHUD.m */; };
 		201D7F561B5B9767009117E2 /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7EDA1B5B9767009117E2 /* KLCoverView.m */; };
 		201D7F571B5B9767009117E2 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7EDC1B5B9767009117E2 /* LDProgressView.m */; };
 		201D7F5B1B5B9767009117E2 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D7EE51B5B9767009117E2 /* SZTextView.m */; };
@@ -320,7 +323,6 @@
 		20951A431BB54616009AE68C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20951A411BB54616009AE68C /* LoginViewController.xib */; };
 		20951A471BB546D1009AE68C /* GetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20951A451BB546D1009AE68C /* GetPasswordViewController.m */; };
 		20951A481BB546D1009AE68C /* GetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20951A461BB546D1009AE68C /* GetPasswordViewController.xib */; };
-		20A817781BC7A60200F88FA6 /* ShouHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A817771BC7A60200F88FA6 /* ShouHuoModel.m */; };
 		20A8177B1BC7BBD000F88FA6 /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8177A1BC7BBD000F88FA6 /* GoodsModel.m */; };
 		20A8179E1BC7BFEA00F88FA6 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8177E1BC7BFEA00F88FA6 /* MKAnnotationView+WebCache.m */; };
 		20A8179F1BC7BFEA00F88FA6 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A817801BC7BFEA00F88FA6 /* NSData+ImageContentType.m */; };
@@ -402,6 +404,18 @@
 		181AD49A1CFEB06B00821795 /* SharePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharePopView.h; sourceTree = "<group>"; };
 		181AD49B1CFEB06B00821795 /* SharePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharePopView.m; sourceTree = "<group>"; };
 		181AD49D1CFEB0FE00821795 /* SharePopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharePopView.xib; sourceTree = "<group>"; };
+		184DE63F1D054594001A55B3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		184DE6401D054594001A55B3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		184DE6411D054594001A55B3 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		184DE6421D054594001A55B3 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		184DE6431D054594001A55B3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		184DE6441D054594001A55B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		184DE6451D054594001A55B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		184DE6461D054594001A55B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		184DE6471D054594001A55B3 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		184DE6481D054594001A55B3 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		184DE64E1D056AB7001A55B3 /* HomeVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoModel.h; sourceTree = "<group>"; };
+		184DE64F1D056AB7001A55B3 /* HomeVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoModel.m; sourceTree = "<group>"; };
 		1850A2B51CFFD3390079E569 /* login-bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg@2x.jpg"; sourceTree = "<group>"; };
 		1850A2B61CFFD3390079E569 /* login-bg@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg@3x.jpg"; sourceTree = "<group>"; };
 		1850A2B71CFFD3390079E569 /* login-bg2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg2@2x.jpg"; sourceTree = "<group>"; };
@@ -665,12 +679,6 @@
 		201D7E781B5B9767009117E2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		201D7E791B5B9767009117E2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		201D7E7A1B5B9767009117E2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		201D7EBA1B5B9767009117E2 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		201D7EBB1B5B9767009117E2 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		201D7EBC1B5B9767009117E2 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		201D7EBD1B5B9767009117E2 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		201D7EBE1B5B9767009117E2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		201D7EBF1B5B9767009117E2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		201D7ED91B5B9767009117E2 /* KLCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCoverView.h; sourceTree = "<group>"; };
 		201D7EDA1B5B9767009117E2 /* KLCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCoverView.m; sourceTree = "<group>"; };
 		201D7EDB1B5B9767009117E2 /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
@@ -933,8 +941,6 @@
 		20951A441BB546D1009AE68C /* GetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPasswordViewController.h; sourceTree = "<group>"; };
 		20951A451BB546D1009AE68C /* GetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPasswordViewController.m; sourceTree = "<group>"; };
 		20951A461BB546D1009AE68C /* GetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetPasswordViewController.xib; sourceTree = "<group>"; };
-		20A817761BC7A60200F88FA6 /* ShouHuoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShouHuoModel.h; sourceTree = "<group>"; };
-		20A817771BC7A60200F88FA6 /* ShouHuoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouHuoModel.m; sourceTree = "<group>"; };
 		20A817791BC7BBD000F88FA6 /* GoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
 		20A8177A1BC7BBD000F88FA6 /* GoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
 		20A8177D1BC7BFEA00F88FA6 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -1390,9 +1396,9 @@
 		201D7DF21B5B8EEB009117E2 = {
 			isa = PBXGroup;
 			children = (
-				185245191CF97E9300ACECD4 /* ZFPlayer */,
 				2016CFE61BE8427200A61FD8 /* frameworks */,
 				201D7F951B5BDA05009117E2 /* MMDrawerController */,
+				185245191CF97E9300ACECD4 /* ZFPlayer */,
 				201D7DFD1B5B8EEB009117E2 /* MenYa */,
 				201D7E171B5B8EEB009117E2 /* MenYaTests */,
 				201D7DFC1B5B8EEB009117E2 /* Products */,
@@ -1637,12 +1643,16 @@
 		201D7EB91B5B9767009117E2 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				201D7EBA1B5B9767009117E2 /* SVIndefiniteAnimatedView.h */,
-				201D7EBB1B5B9767009117E2 /* SVIndefiniteAnimatedView.m */,
-				201D7EBC1B5B9767009117E2 /* SVProgressHUD-Prefix.pch */,
-				201D7EBD1B5B9767009117E2 /* SVProgressHUD.bundle */,
-				201D7EBE1B5B9767009117E2 /* SVProgressHUD.h */,
-				201D7EBF1B5B9767009117E2 /* SVProgressHUD.m */,
+				184DE63F1D054594001A55B3 /* SVIndefiniteAnimatedView.h */,
+				184DE6401D054594001A55B3 /* SVIndefiniteAnimatedView.m */,
+				184DE6411D054594001A55B3 /* SVProgressAnimatedView.h */,
+				184DE6421D054594001A55B3 /* SVProgressAnimatedView.m */,
+				184DE6431D054594001A55B3 /* SVProgressHUD-Prefix.pch */,
+				184DE6441D054594001A55B3 /* SVProgressHUD.bundle */,
+				184DE6451D054594001A55B3 /* SVProgressHUD.h */,
+				184DE6461D054594001A55B3 /* SVProgressHUD.m */,
+				184DE6471D054594001A55B3 /* SVRadialGradientLayer.h */,
+				184DE6481D054594001A55B3 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -2036,12 +2046,12 @@
 		20652AE71BA6AAB700E63894 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				20A817761BC7A60200F88FA6 /* ShouHuoModel.h */,
-				20A817771BC7A60200F88FA6 /* ShouHuoModel.m */,
 				20A817791BC7BBD000F88FA6 /* GoodsModel.h */,
 				20A8177A1BC7BBD000F88FA6 /* GoodsModel.m */,
 				205DD1731BE455F60009FD3D /* GoodsCartModel.h */,
 				205DD1741BE455F60009FD3D /* GoodsCartModel.m */,
+				184DE64E1D056AB7001A55B3 /* HomeVideoModel.h */,
+				184DE64F1D056AB7001A55B3 /* HomeVideoModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2278,6 +2288,7 @@
 				181AD46D1CFE7AF600821795 /* icon-shoppingcart@3x.png in Resources */,
 				1850A2D71CFFD3390079E569 /* login-btn-input@2x.png in Resources */,
 				181AD45E1CFE7AF600821795 /* icon-keep@2x.png in Resources */,
+				184DE64B1D054594001A55B3 /* SVProgressHUD.bundle in Resources */,
 				181AD4571CFE7AF600821795 /* icon-fx-pyq@3x.png in Resources */,
 				181AD4771CFE7AF600821795 /* pho-tx@3x.png in Resources */,
 				203FE80A1C1C4DF500C50F9B /* WuLiuWebViewController.xib in Resources */,
@@ -2294,7 +2305,6 @@
 				181AD45F1CFE7AF600821795 /* icon-keep@3x.png in Resources */,
 				1850A2E61CFFD3390079E569 /* login-icon-lc-bg-green@3x.png in Resources */,
 				20652B6C1BA7F52700E63894 /* ScanViewController.xib in Resources */,
-				201D7F471B5B9767009117E2 /* SVProgressHUD.bundle in Resources */,
 				20652AE61BA6A9DA00E63894 /* GoodsListViewController.xib in Resources */,
 				187E87851CFBEAE000379D75 /* UMSLoginViewController.xib in Resources */,
 				181AD4691CFE7AF600821795 /* icon-search@3x.png in Resources */,
@@ -2410,16 +2420,18 @@
 				20A817B61BC7DCEF00F88FA6 /* MyOrderModel.m in Sources */,
 				201D7F281B5B9767009117E2 /* UIScrollView+MJRefresh.m in Sources */,
 				1874B3851CFD7401006E816D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				184DE64C1D054594001A55B3 /* SVProgressHUD.m in Sources */,
 				205F0E601BA8F9B1008A2065 /* ContactUsViewController.m in Sources */,
 				20F357D71BC6146400A3399A /* KeychainItemWrapper.m in Sources */,
 				201D7F041B5B9767009117E2 /* AnimationView.m in Sources */,
 				20652A6A1BA663FA00E63894 /* MyMsgViewController.m in Sources */,
+				184DE64A1D054594001A55B3 /* SVProgressAnimatedView.m in Sources */,
 				20652B6B1BA7F52700E63894 /* ScanViewController.m in Sources */,
 				20951A421BB54616009AE68C /* LoginViewController.m in Sources */,
-				201D7F481B5B9767009117E2 /* SVProgressHUD.m in Sources */,
 				20652AC41BA69D6800E63894 /* RegisterViewController.m in Sources */,
 				20951A471BB546D1009AE68C /* GetPasswordViewController.m in Sources */,
 				205F0E621BA8F9B1008A2065 /* FeedbackViewController.m in Sources */,
+				184DE6501D056AB7001A55B3 /* HomeVideoModel.m in Sources */,
 				20652B0C1BA7AD1200E63894 /* GoodsDetailViewController.m in Sources */,
 				1874B3891CFD7401006E816D /* UIRefreshControl+AFNetworking.m in Sources */,
 				201D7F061B5B9767009117E2 /* UIBarButtonItem+WB.m in Sources */,
@@ -2431,10 +2443,8 @@
 				187477C91CF84335008F1C25 /* IQTextView.m in Sources */,
 				201D7F081B5B9767009117E2 /* Items.m in Sources */,
 				20652A911BA675E100E63894 /* MessageCell.m in Sources */,
-				20A817781BC7A60200F88FA6 /* ShouHuoModel.m in Sources */,
 				204D51401BF7220800CE2F56 /* GuZhangViewController.m in Sources */,
 				20652B3E1BA7CDEA00E63894 /* OrderCell.m in Sources */,
-				201D7F461B5B9767009117E2 /* SVIndefiniteAnimatedView.m in Sources */,
 				185245791CF9886500ACECD4 /* MASViewAttribute.m in Sources */,
 				203004E31C215BA600E164CB /* WXUtil.mm in Sources */,
 				20A8177B1BC7BBD000F88FA6 /* GoodsModel.m in Sources */,
@@ -2492,6 +2502,7 @@
 				201D7F8E1B5B9D25009117E2 /* BaseModel.m in Sources */,
 				205F0E5E1BA8F9B1008A2065 /* AboutCompanyViewController.m in Sources */,
 				201D7F221B5B9767009117E2 /* MJRefreshGifFooter.m in Sources */,
+				184DE64D1D054594001A55B3 /* SVRadialGradientLayer.m in Sources */,
 				1852457D1CF9886500ACECD4 /* View+MASAdditions.m in Sources */,
 				1874B3981CFD741D006E816D /* AFHTTPSessionManager.m in Sources */,
 				1852457A1CF9886500ACECD4 /* MASViewConstraint.m in Sources */,
@@ -2523,6 +2534,7 @@
 				201D7F561B5B9767009117E2 /* KLCoverView.m in Sources */,
 				1874B3881CFD7401006E816D /* UIProgressView+AFNetworking.m in Sources */,
 				187477CD1CF84335008F1C25 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				184DE6491D054594001A55B3 /* SVIndefiniteAnimatedView.m in Sources */,
 				1874B3831CFD7401006E816D /* AFImageDownloader.m in Sources */,
 				1874B39D1CFD741D006E816D /* AFURLSessionManager.m in Sources */,
 				187477C71CF84335008F1C25 /* IQKeyboardManager.m in Sources */,

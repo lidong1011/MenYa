@@ -65,7 +65,7 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger payWay;
     NSString *userid = [[NSUserDefaults standardUserDefaults]stringForKey:kuserId];
     [parameter setObject:userid forKey:@"userid"];
     __weak typeof(self) weakSelf = self;
-    [NetworkDataClient postDataWithUrl:ksmsUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [NetworkDataClient postDataWithUrl:kcheckVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
 //        [self success:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -140,7 +140,7 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger payWay;
     }
     [SVProgressHUD showWithStatus:kLoadingData];
     __weak typeof(self) weakSelf = self;
-    [NetworkDataClient postDataWithUrl:ksmsUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [NetworkDataClient postDataWithUrl:kcheckVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self jieSuansuccess:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -389,7 +389,7 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger payWay;
     [parameter setObject:_dic[@"orderid"] forKey:@"id"];
     [parameter setObject:@"已支付" forKey:@"state"];
     [SVProgressHUD showWithStatus:kLoadingData];
-    [NetworkDataClient postDataWithUrl:ksmsUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [NetworkDataClient postDataWithUrl:kcheckVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         //
         [self changeOrderStatesuccess:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

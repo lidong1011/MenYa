@@ -71,7 +71,7 @@ STRONG_NONATOMIC_PROPERTY UILabel *num;
     }];
     
     [_detail mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_price.mas_bottom);
+        make.bottom.equalTo(_icon.mas_bottom);
         make.right.equalTo(self.mas_right).offset(-space);
         make.left.equalTo(_icon.mas_right).offset(space);
         make.height.equalTo(@60);

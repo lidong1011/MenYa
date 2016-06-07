@@ -11,7 +11,7 @@
 @implementation NetworkDataClient
 + (NSURLSessionDataTask *)getDataWithUrl:(NSString *)urlString parameters:(NSMutableDictionary *)requestParameters success:(FinishBlock)success failure:(ErrorBlock)failure
 {
-    [SVProgressHUD showWithStatus:kLoadingData];
+//    [SVProgressHUD showWithStatus:kLoadingData];
     return [[AFNetAPIClient sharedClient] GET:urlString parameters:requestParameters progress:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
 //        NSError *err;
 //        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject
@@ -77,7 +77,7 @@
 
 + (NSURLSessionDataTask *)postDataWithUrl:(NSString *)urlString parameters:(NSMutableDictionary *)requestParameters success:(FinishBlock)success failure:(ErrorBlock)failure
 {
-    [SVProgressHUD showWithStatus:kLoadingData];
+//    [SVProgressHUD showWithStatus:kLoadingData];
     return [[AFNetAPIClient sharedClient] POST:urlString parameters:requestParameters progress:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
         //        NSError *err;
         //        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject
