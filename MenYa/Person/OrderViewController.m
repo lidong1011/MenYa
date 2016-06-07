@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *states;
 @property (nonatomic, strong) NSMutableArray *times;
-
 STRONG_NONATOMIC_PROPERTY NSMutableArray *tableViewMutAry;
 ASSIGN_NONATOMIC_PROPERTY NSInteger stateFlag;
 ASSIGN_NONATOMIC_PROPERTY NSInteger timeFlag;

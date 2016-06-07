@@ -10,7 +10,7 @@
 #import "MyAddressViewController.h"
 #import "MessageViewController.h"
 #import "OrderViewController.h"
-#import "GoodsViewController.h"
+//#import "GoodsViewController.h"
 #import "CustNavigationViewController.h"
 #import "UIViewController+MMDrawerController.h"
 @interface MyMsgViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
@@ -65,10 +65,10 @@
 - (void)signOut
 {
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:kuserId];
-    GoodsViewController *vc = [[GoodsViewController alloc]init];
-    CustNavigationViewController *nvc = [[CustNavigationViewController alloc]initWithRootViewController:vc];
-    [self.mm_drawerController setCenterViewController:nvc];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    GoodsViewController *vc = [[GoodsViewController alloc]init];
+//    CustNavigationViewController *nvc = [[CustNavigationViewController alloc]initWithRootViewController:vc];
+//    [self.mm_drawerController setCenterViewController:nvc];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

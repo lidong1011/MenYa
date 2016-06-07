@@ -150,7 +150,6 @@ alert.tag = tag; \
 //快捷登录 User/loginQuick
 #define kloginQuick  @"User/loginQuick"
 
-
 //首页视频列表 Video/getList
 #define kVideogetList  @"Video/getList"
 

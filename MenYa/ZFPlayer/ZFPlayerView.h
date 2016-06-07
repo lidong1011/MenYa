@@ -54,6 +54,13 @@ typedef NS_ENUM(NSInteger, ZFPlayerLayerGravity) {
 @property (nonatomic, strong) ZFPlayerControlView *controlView;
 /** 是否被用户暂停 */
 @property (nonatomic, assign) BOOL                isPauseByUser;
+
+/** 预览图 开始和结束用 */
+@property (nonatomic, strong) UIImageView         *imageView;
+//预览图片
+@property (nonatomic, strong) NSString            *beginImgUrl;
+//预览图片
+@property (nonatomic, strong) NSString            *endImgUrl;
 /**
  *  取消延时隐藏controlView的方法,在ViewController的delloc方法中调用
  *  用于解决：刚打开视频播放器，就关闭该页面，maskView的延时隐藏还未执行。
@@ -109,4 +116,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerLayerGravity) {
 
 //隐藏控制层
 - (void)hideControlView;
+
+//设置预览图地址
+- (void)setImageBeginUrl:(NSString *)beginUrl endImgUrl:(NSString *)endUrl;
 @end

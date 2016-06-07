@@ -10,7 +10,7 @@
 #import "HelpViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "LeftViewController.h"
-#import "GoodsViewController.h"
+//#import "GoodsViewController.h"
 #import "CustNavigationViewController.h"
 #import "MMDrawerController.h"
 static const CGFloat kBorderW = 60;
@@ -171,35 +171,10 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger flag;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        [self gotShouJi];
+//        [self gotShouJi];
     } else if (buttonIndex == 1) {
         [_session startRunning];
     }
-}
-
-- (void)gotShouJi
-{
-    [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"shjid"];
-    [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:@"SHJNAME"];
-//    [[NSUserDefaults standardUserDefaults]setObject:model.userid forKey:@"SHJICON"];
-    GoodsViewController *goodsVC = [[GoodsViewController alloc]init];
-    goodsVC.machineid = @"1";
-    CustNavigationViewController *goodsNVC = [[CustNavigationViewController alloc]initWithRootViewController:goodsVC];
-    
-    LeftViewController *leftVC = [[LeftViewController alloc]init];
-    //    CustNavigationViewController *leftDrawer = [[CustNavigationViewController alloc]initWithRootViewController:leftVC];
-    
-    
-    MMDrawerController * drawerController = [[MMDrawerController alloc]
-                                             initWithCenterViewController:goodsNVC
-                                             leftDrawerViewController:leftVC
-                                             rightDrawerViewController:nil];
-    [drawerController setRestorationIdentifier:@"MMDrawer"];
-    [drawerController setMaximumLeftDrawerWidth:(150)];
-    //    [drawerController setShowsShadow:NO];
-    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    [self presentViewController:drawerController animated:YES completion:nil];
 }
 
 - (IBAction)leadBtnAction:(UIButton *)sender

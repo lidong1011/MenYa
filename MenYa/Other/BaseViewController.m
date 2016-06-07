@@ -18,7 +18,7 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = KLColor(246, 246, 246);
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"back.png" highlightIcon:nil imageScale:1 target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"icon-close.png" highlightIcon:nil imageScale:1 target:self action:@selector(back)];
 //    [self.navigationController.navigationBar setBackgroundImage:[self imageWithColor:[[UIColor orangeColor]colorWithAlphaComponent:0]] forBarMetrics:UIBarMetricsDefault];
 //    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 }
@@ -58,7 +58,20 @@
 
 - (void)back
 {
+    [self transitionPush];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)transitionPush{
+    
+    
+    CATransition *tran = [CATransition animation];
+    tran.duration =1;
+    tran.type =@"oglFlip";
+    tran.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]; /* 动画的开始与结束的快慢*/
+    //@"cube" @"moveIn" @"reveal" @"fade"(default) @"pageCurl" @"pageUnCurl" @"suckEffect" @"rippleEffect" @"oglFlip"@"cameraIrisHollowOpen"@"cameraIrisHollowClose"
+    tran.subtype =kCATransitionFromLeft;
+    [self.navigationController.view.layer addAnimation:tran forKey:nil];
 }
 
 - (void)didReceiveMemoryWarning {

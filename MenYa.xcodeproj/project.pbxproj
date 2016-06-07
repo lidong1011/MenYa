@@ -10,6 +10,8 @@
 		180321581CF42758004F7B97 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180321571CF42758004F7B97 /* libiconv.tbd */; };
 		1803215A1CF42766004F7B97 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180321591CF42766004F7B97 /* libstdc++.6.0.9.tbd */; };
 		1803215C1CF427DA004F7B97 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1803215B1CF427DA004F7B97 /* libbz2.tbd */; };
+		1818DB6F1D066D0D00A939D2 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818DB6D1D066D0D00A939D2 /* GoodsDetailViewController.m */; };
+		1818DB701D066D0D00A939D2 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818DB6E1D066D0D00A939D2 /* GoodsDetailViewController.xib */; };
 		181AD4481CFE7AF600821795 /* btn-yes-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181AD3F71CFE7AF600821795 /* btn-yes-bg@2x.png */; };
 		181AD4491CFE7AF600821795 /* btn-yes-bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181AD3F81CFE7AF600821795 /* btn-yes-bg@3x.png */; };
 		181AD44A1CFE7AF600821795 /* goods-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181AD3F91CFE7AF600821795 /* goods-logo@2x.png */; };
@@ -274,8 +276,6 @@
 		205F0E631BA8F9B1008A2065 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205F0E5D1BA8F9B1008A2065 /* FeedbackViewController.xib */; };
 		206287EC1C02A9E0008FC054 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206287EA1C02A9E0008FC054 /* HelpViewController.m */; };
 		206287ED1C02A9E0008FC054 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206287EB1C02A9E0008FC054 /* HelpViewController.xib */; };
-		20652A321BA5CFB800E63894 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652A301BA5CFB800E63894 /* GoodsViewController.m */; };
-		20652A331BA5CFB800E63894 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652A311BA5CFB800E63894 /* GoodsViewController.xib */; };
 		20652A371BA5D48700E63894 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652A351BA5D48700E63894 /* LeftViewController.m */; };
 		20652A381BA5D48700E63894 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652A361BA5D48700E63894 /* LeftViewController.xib */; };
 		20652A451BA5D72B00E63894 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652A431BA5D72B00E63894 /* SettingsViewController.m */; };
@@ -299,8 +299,6 @@
 		20652AC41BA69D6800E63894 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652AC21BA69D6800E63894 /* RegisterViewController.m */; };
 		20652AC51BA69D6800E63894 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652AC31BA69D6800E63894 /* RegisterViewController.xib */; };
 		20652AE11BA6A86C00E63894 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652AE01BA6A86C00E63894 /* ViewPagerController.m */; };
-		20652AE51BA6A9DA00E63894 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652AE31BA6A9DA00E63894 /* GoodsListViewController.m */; };
-		20652AE61BA6A9DA00E63894 /* GoodsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652AE41BA6A9DA00E63894 /* GoodsListViewController.xib */; };
 		20652AED1BA6AB1C00E63894 /* GoodsCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652AEB1BA6AB1C00E63894 /* GoodsCollectCell.m */; };
 		20652AEE1BA6AB1C00E63894 /* GoodsCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652AEC1BA6AB1C00E63894 /* GoodsCollectCell.xib */; };
 		20652AF21BA6BC5200E63894 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652AF01BA6BC5200E63894 /* ShoppingCartViewController.m */; };
@@ -309,8 +307,6 @@
 		20652B031BA6C0D600E63894 /* XiaDangViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652B011BA6C0D600E63894 /* XiaDangViewController.xib */; };
 		20652B071BA6C1C400E63894 /* GDOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652B051BA6C1C400E63894 /* GDOrderListCell.m */; };
 		20652B081BA6C1C400E63894 /* GDOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652B061BA6C1C400E63894 /* GDOrderListCell.xib */; };
-		20652B0C1BA7AD1200E63894 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652B0A1BA7AD1200E63894 /* GoodsDetailViewController.m */; };
-		20652B0D1BA7AD1200E63894 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652B0B1BA7AD1200E63894 /* GoodsDetailViewController.xib */; };
 		20652B2E1BA7C91A00E63894 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652B2D1BA7C91A00E63894 /* DOPDropDownMenu.m */; };
 		20652B3E1BA7CDEA00E63894 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20652B3C1BA7CDEA00E63894 /* OrderCell.m */; };
 		20652B3F1BA7CDEA00E63894 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20652B3D1BA7CDEA00E63894 /* OrderCell.xib */; };
@@ -353,6 +349,9 @@
 		180321571CF42758004F7B97 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		180321591CF42766004F7B97 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		1803215B1CF427DA004F7B97 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		1818DB6C1D066D0D00A939D2 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
+		1818DB6D1D066D0D00A939D2 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
+		1818DB6E1D066D0D00A939D2 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
 		181AD3F71CFE7AF600821795 /* btn-yes-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-yes-bg@2x.png"; sourceTree = "<group>"; };
 		181AD3F81CFE7AF600821795 /* btn-yes-bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-yes-bg@3x.png"; sourceTree = "<group>"; };
 		181AD3F91CFE7AF600821795 /* goods-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goods-logo@2x.png"; sourceTree = "<group>"; };
@@ -866,9 +865,6 @@
 		206287E91C02A9E0008FC054 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		206287EA1C02A9E0008FC054 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		206287EB1C02A9E0008FC054 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
-		20652A2F1BA5CFB800E63894 /* GoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
-		20652A301BA5CFB800E63894 /* GoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
-		20652A311BA5CFB800E63894 /* GoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsViewController.xib; sourceTree = "<group>"; };
 		20652A341BA5D48700E63894 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		20652A351BA5D48700E63894 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		20652A361BA5D48700E63894 /* LeftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
@@ -904,9 +900,6 @@
 		20652AC31BA69D6800E63894 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		20652ADF1BA6A86C00E63894 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		20652AE01BA6A86C00E63894 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
-		20652AE21BA6A9DA00E63894 /* GoodsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListViewController.h; sourceTree = "<group>"; };
-		20652AE31BA6A9DA00E63894 /* GoodsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListViewController.m; sourceTree = "<group>"; };
-		20652AE41BA6A9DA00E63894 /* GoodsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsListViewController.xib; sourceTree = "<group>"; };
 		20652AEA1BA6AB1C00E63894 /* GoodsCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCollectCell.h; sourceTree = "<group>"; };
 		20652AEB1BA6AB1C00E63894 /* GoodsCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCollectCell.m; sourceTree = "<group>"; };
 		20652AEC1BA6AB1C00E63894 /* GoodsCollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCollectCell.xib; sourceTree = "<group>"; };
@@ -919,9 +912,6 @@
 		20652B041BA6C1C400E63894 /* GDOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDOrderListCell.h; path = ../Goods/GDOrderListCell.h; sourceTree = "<group>"; };
 		20652B051BA6C1C400E63894 /* GDOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDOrderListCell.m; path = ../Goods/GDOrderListCell.m; sourceTree = "<group>"; };
 		20652B061BA6C1C400E63894 /* GDOrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GDOrderListCell.xib; path = ../Goods/GDOrderListCell.xib; sourceTree = "<group>"; };
-		20652B091BA7AD1200E63894 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
-		20652B0A1BA7AD1200E63894 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
-		20652B0B1BA7AD1200E63894 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
 		20652B2C1BA7C91A00E63894 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DOPDropDownMenu.h; path = menu/DOPDropDownMenu.h; sourceTree = "<group>"; };
 		20652B2D1BA7C91A00E63894 /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DOPDropDownMenu.m; path = menu/DOPDropDownMenu.m; sourceTree = "<group>"; };
 		20652B3B1BA7CDEA00E63894 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
@@ -2095,15 +2085,9 @@
 				187477991CF83DC5008F1C25 /* HomeViewController.h */,
 				1874779A1CF83DC5008F1C25 /* HomeViewController.m */,
 				1874779B1CF83DC5008F1C25 /* HomeViewController.xib */,
-				20652A2F1BA5CFB800E63894 /* GoodsViewController.h */,
-				20652A301BA5CFB800E63894 /* GoodsViewController.m */,
-				20652A311BA5CFB800E63894 /* GoodsViewController.xib */,
-				20652AE21BA6A9DA00E63894 /* GoodsListViewController.h */,
-				20652AE31BA6A9DA00E63894 /* GoodsListViewController.m */,
-				20652AE41BA6A9DA00E63894 /* GoodsListViewController.xib */,
-				20652B091BA7AD1200E63894 /* GoodsDetailViewController.h */,
-				20652B0A1BA7AD1200E63894 /* GoodsDetailViewController.m */,
-				20652B0B1BA7AD1200E63894 /* GoodsDetailViewController.xib */,
+				1818DB6C1D066D0D00A939D2 /* GoodsDetailViewController.h */,
+				1818DB6D1D066D0D00A939D2 /* GoodsDetailViewController.m */,
+				1818DB6E1D066D0D00A939D2 /* GoodsDetailViewController.xib */,
 				20652AEF1BA6BC5200E63894 /* ShoppingCartViewController.h */,
 				20652AF01BA6BC5200E63894 /* ShoppingCartViewController.m */,
 				20652AF11BA6BC5200E63894 /* ShoppingCartViewController.xib */,
@@ -2258,12 +2242,12 @@
 				20652A8D1BA675CA00E63894 /* AddressCell.xib in Resources */,
 				181AD46B1CFE7AF600821795 /* icon-share@3x.png in Resources */,
 				181AD4501CFE7AF600821795 /* icon-close@2x.png in Resources */,
-				20652B0D1BA7AD1200E63894 /* GoodsDetailViewController.xib in Resources */,
 				201D7E0A1B5B8EEB009117E2 /* Main.storyboard in Resources */,
 				20652A971BA67A8C00E63894 /* AddAddressViewController.xib in Resources */,
 				1850A2DA1CFFD3390079E569 /* login-btn@3x.png in Resources */,
 				1850A2E71CFFD3390079E569 /* login-icon-lc-bg-pink@2x.png in Resources */,
 				181AD4531CFE7AF600821795 /* icon-comment@3x.png in Resources */,
+				1818DB701D066D0D00A939D2 /* GoodsDetailViewController.xib in Resources */,
 				181AD46A1CFE7AF600821795 /* icon-share@2x.png in Resources */,
 				187E87891CFBEAE000379D75 /* UMSocialLocalizable.strings in Resources */,
 				181AD4611CFE7AF600821795 /* icon-list@3x.png in Resources */,
@@ -2305,7 +2289,6 @@
 				181AD45F1CFE7AF600821795 /* icon-keep@3x.png in Resources */,
 				1850A2E61CFFD3390079E569 /* login-icon-lc-bg-green@3x.png in Resources */,
 				20652B6C1BA7F52700E63894 /* ScanViewController.xib in Resources */,
-				20652AE61BA6A9DA00E63894 /* GoodsListViewController.xib in Resources */,
 				187E87851CFBEAE000379D75 /* UMSLoginViewController.xib in Resources */,
 				181AD4691CFE7AF600821795 /* icon-search@3x.png in Resources */,
 				1850A2DC1CFFD3390079E569 /* login-icon-direction@3x.png in Resources */,
@@ -2357,7 +2340,6 @@
 				208CB4E11BEA0D0E003F7228 /* WuLiuCell.xib in Resources */,
 				1850A2D41CFFD3390079E569 /* login-bg2@3x.jpg in Resources */,
 				201D7F1E1B5B9767009117E2 /* MJRefresh.bundle in Resources */,
-				20652A331BA5CFB800E63894 /* GoodsViewController.xib in Resources */,
 				181AD4731CFE7AF600821795 /* img-1@3x.png in Resources */,
 				1850A2D91CFFD3390079E569 /* login-btn@2x.png in Resources */,
 				181AD4741CFE7AF600821795 /* pho-pl-bg@2x.png in Resources */,
@@ -2432,7 +2414,6 @@
 				20951A471BB546D1009AE68C /* GetPasswordViewController.m in Sources */,
 				205F0E621BA8F9B1008A2065 /* FeedbackViewController.m in Sources */,
 				184DE6501D056AB7001A55B3 /* HomeVideoModel.m in Sources */,
-				20652B0C1BA7AD1200E63894 /* GoodsDetailViewController.m in Sources */,
 				1874B3891CFD7401006E816D /* UIRefreshControl+AFNetworking.m in Sources */,
 				201D7F061B5B9767009117E2 /* UIBarButtonItem+WB.m in Sources */,
 				18711C811D027BBA005B58F0 /* ChooseSpecificationsView.m in Sources */,
@@ -2484,7 +2465,6 @@
 				201D7E041B5B8EEB009117E2 /* AppDelegate.m in Sources */,
 				202D8B0A1BE7414700910E8B /* Order.m in Sources */,
 				1874B3991CFD741D006E816D /* AFNetworkReachabilityManager.m in Sources */,
-				20652AE51BA6A9DA00E63894 /* GoodsListViewController.m in Sources */,
 				201D7F571B5B9767009117E2 /* LDProgressView.m in Sources */,
 				201D7F071B5B9767009117E2 /* UIImage+WB.m in Sources */,
 				201D7F161B5B9767009117E2 /* MyStartView.m in Sources */,
@@ -2522,7 +2502,6 @@
 				20652A841BA6732400E63894 /* OrderViewController.m in Sources */,
 				201D7F911B5B9D25009117E2 /* DESEncryptFile.m in Sources */,
 				201D7F5C1B5B9767009117E2 /* UIColor+RGBValues.m in Sources */,
-				20652A321BA5CFB800E63894 /* GoodsViewController.m in Sources */,
 				18EE7B031D016D370055D758 /* VideoCommentCell.m in Sources */,
 				202D8B0B1BE7414700910E8B /* base64.m in Sources */,
 				208CB4E01BEA0D0E003F7228 /* WuLiuCell.m in Sources */,
@@ -2542,6 +2521,7 @@
 				201D7F291B5B9767009117E2 /* UIView+MJExtension.m in Sources */,
 				202D8B1A1BE77A6700910E8B /* WuLiuViewController.m in Sources */,
 				1874B3671CFD26FF006E816D /* ShowActView.m in Sources */,
+				1818DB6F1D066D0D00A939D2 /* GoodsDetailViewController.m in Sources */,
 				201D7F271B5B9767009117E2 /* UIScrollView+MJExtension.m in Sources */,
 				186F5E921CF5455A00CB1E81 /* UILabel+AttributeText.m in Sources */,
 				185245761CF9886500ACECD4 /* MASConstraint.m in Sources */,

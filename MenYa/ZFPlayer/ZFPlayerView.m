@@ -178,6 +178,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     [self.player replaceCurrentItemWithPlayerItem:nil];
     // 把player置为nil
     self.player = nil;
+    [self imageView];
     if (self.isChangeResolution) { // 切换分辨率
         [self.controlView resetControlViewForResolution];
         self.isChangeResolution = NO;
@@ -363,7 +364,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     _videoURL = videoURL;
     
     // 播放开始之前（加载中）设置站位图
-    UIImage *image = [UIImage imageNamed:ZFPlayerSrcName(@"ZFPlayer_loading_bgView")];
+    UIImage *image = [UIImage imageNamed:@"pic-googs-bg.jpg"];
     self.layer.contents = (id) image.CGImage;
     
     // 每次加载视频URL都设置重播为NO
@@ -590,6 +591,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
                 if (self.seekTime) {
                     [self seekToTime:self.seekTime completionHandler:nil];
                 }
+                
+                _imageView.hidden = YES;
                 
             } else if (self.player.currentItem.status == AVPlayerItemStatusFailed){
                 
@@ -1226,6 +1229,9 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
         // 延迟隐藏controlView
         [self animateShow];
     }
+    //预览图出现
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:[kUrl stringByAppendingPathComponent:_endImgUrl]] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
+    _imageView.hidden = NO;
 }
 
 /**
@@ -1700,4 +1706,24 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     return _controlView;
 }
 
+- (UIImageView *)imageView
+{
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] init];
+        [self addSubview:_imageView];
+        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.leading.trailing.bottom.equalTo(self);
+        }];
+        _imageView.hidden = YES;
+    }
+    return _imageView;
+}
+
+- (void)setImageBeginUrl:(NSString *)beginUrl endImgUrl:(NSString *)endUrl
+{
+    _beginImgUrl = beginUrl;
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:[kUrl stringByAppendingPathComponent:_beginImgUrl]] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
+    _imageView.hidden = NO;
+    _endImgUrl = endUrl;
+}
 @end

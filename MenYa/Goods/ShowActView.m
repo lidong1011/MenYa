@@ -53,20 +53,27 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
 
 - (void)setDatas:(NSArray *)datas
 {
+    NSArray *subViews = self.subviews;
+    for (UIView *subView in subViews) {
+        [subView removeFromSuperview];
+    }
     _datas = datas;
     NSInteger count = datas.count;
     CGFloat itemH = self.height/count;
     //背景
-    UIImageView *background = [[UIImageView alloc]initWithFrame:self.bounds];
+    UIImageView *background = [[UIImageView alloc]init];
+    background.frame = CGRectMake(0, count*itemH, self.width, self.height);
+    [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+        background.frame = CGRectMake(0, 0, self.width, self.height);
+    } completion:^(BOOL finished) {
+        //
+    }];
+
     background.image = [UIImage imageNamed:@"icon-more-bg.png"];
     [self addSubview:background];
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
     scrollView.scrollEnabled = NO;
     [self addSubview:scrollView];
-    NSArray *subViews = scrollView.subviews;
-    for (UIView *subView in subViews) {
-        [subView removeFromSuperview];
-    }
     
     for (NSInteger i = 0; i < count; i++) {
         NSDictionary *dic = datas[i];

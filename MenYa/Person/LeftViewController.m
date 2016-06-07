@@ -10,13 +10,12 @@
 #import "SettingsViewController.h"
 #import "MyMsgViewController.h"
 #import "GuZhangViewController.h"
-#import "GoodsViewController.h"
+//#import "GoodsViewController.h"
 #import "CustNavigationViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 @interface LeftViewController ()
-
 
 @end
 

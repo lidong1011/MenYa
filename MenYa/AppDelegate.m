@@ -44,7 +44,7 @@
     [self setYouMeng];
     
     //监听返回首页
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserId];
 //    if ([[NSUserDefaults standardUserDefaults]objectForKey:kuserId] == nil)
 //    {
 //        WecomeViewController *vc = [[WecomeViewController alloc]init];
@@ -56,7 +56,7 @@
 //        ViewController *goodsVC = [[ViewController alloc]init];
         _centerVC = [[HomeViewController alloc]init];
         CustNavigationViewController *homeNVC = [[CustNavigationViewController alloc]initWithRootViewController:_centerVC];
-        homeNVC.navigationBarHidden = YES;
+//        homeNVC.navigationBarHidden = YES;
         
         LeftViewController *leftVC = [[LeftViewController alloc]init];
         //    CustNavigationViewController *leftDrawer = [[CustNavigationViewController alloc]initWithRootViewController:leftVC];

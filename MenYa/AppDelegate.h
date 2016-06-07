@@ -15,5 +15,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) HomeViewController *centerVC;
 @property (strong, nonatomic) MMDrawerController * drawerController;
+- (void)backToHome;
 @end
 

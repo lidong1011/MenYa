@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *yanZhengMa;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) int timeInt;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (nonatomic, assign) int type;
 @end
 
@@ -135,6 +136,13 @@
 #pragma mark - textfeild delegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (_phoneTF.text.length>0&&_yanZhengMTF.text.length>0&&_paswordTF.text.length>0) {
+        _registerBtn.enabled = YES;
+    }
+    else
+    {
+        _registerBtn.enabled = NO;
+    }
     if(textField==_phoneTF)
     {
         if (range.location>=11) {
@@ -163,7 +171,9 @@
         case 0:
         {
             //显示密码
+            sender.selected = !sender.selected;
             _paswordTF.secureTextEntry = NO;
+            break;
         }
         case 5:
         {

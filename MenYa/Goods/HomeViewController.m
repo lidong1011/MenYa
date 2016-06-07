@@ -19,6 +19,7 @@
 #import "ChooseSpecificationsView.h"
 #import "MJRefresh.h"
 #import "HomeVideoModel.h"
+#import "GoodsDetailViewController.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 STRONG_NONATOMIC_PROPERTY NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet ShowActView *showActView;
@@ -32,6 +33,7 @@ STRONG_NONATOMIC_PROPERTY SharePopView *sharePopView;
 STRONG_NONATOMIC_PROPERTY VideoCommentView *videoComment;
 STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
 @property (nonatomic, assign) int pageNo;
+@property (nonatomic, assign) CGPoint beforePoint;
 @end
 
 @implementation HomeViewController
@@ -73,12 +75,16 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self pausePlayer:NO];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-//    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    [self pausePlayer:YES];
+    self.navigationController.navigationBarHidden = NO;
+
 }
 
 //获取列表数据
@@ -161,17 +167,6 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
     [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
-//- (UITableView *)tableView
-//{
-//    if (!_tableView) {
-//        _tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) style:UITableViewStylePlain];
-//        _tableView.pagingEnabled = YES;
-//        _tableView.dataSource = self;
-//        _tableView.delegate = self;
-//    }
-//    return _tableView;
-//}
-
 - (UIImage *)imageWithColor:(UIColor *)color
 {
     // 描述矩形
@@ -238,7 +233,7 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         cell = [[NSBundle mainBundle] loadNibNamed:@"HomePlayerCell" owner:self options:nil][0];
     }
     HomeVideoModel *model = _dataSource[indexPath.row];
-    
+    MyLog(@"%@",indexPath);
 //    __block NSIndexPath *weakIndexPath = indexPath;
 //    __block HomePlayerCell *weakCell     = cell;
     if (indexPath.row == 0)
@@ -260,6 +255,7 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         //                                 AtIndexPath:weakIndexPath
         //                            withImageViewTag:101];
         [self.playerView resetPlayer];
+        [self.playerView setImageBeginUrl:model.ImgUrl1 endImgUrl:model.ImgUrl1];
         [self.playerView setVideoURL:videoURL];
         [self.playerView addPlayerToCellImageView:cell.avatarImageView];
         
@@ -286,10 +282,11 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (_dataSource.count == 0) {
+    CGPoint offset = scrollView.contentOffset;
+    if (_dataSource.count == 0||fabs(offset.y-_beforePoint.y)<kHeight) {
         return;
     }
-    CGPoint offset = scrollView.contentOffset;
+    _beforePoint = offset;
     NSIndexPath *indexPath = [_tableView indexPathForRowAtPoint:offset];
     HomeVideoModel *model = _dataSource[indexPath.row];
     NSString *price = [NSString stringWithFormat:@"￥%.2f I 加入购物车",[model.SkuPrice floatValue]];
@@ -312,6 +309,7 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
     //                                 AtIndexPath:weakIndexPath
     //                            withImageViewTag:101];
     [self.playerView resetPlayer];
+    [self.playerView setImageBeginUrl:model.ImgUrl1 endImgUrl:model.ImgUrl1];
     [weakSelf.playerView setVideoURL:videoURL];
     [weakSelf.playerView addPlayerToCellImageView:cell.avatarImageView];
     
@@ -342,7 +340,7 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         case 2:
         {
             //商品详情
-//            [self shoppingCarts];
+            [self pushToDetail];
             break;
         }
         case 3:
@@ -404,6 +402,27 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         default:
             break;
     }
+}
+
+- (void)transitionPush{
+    
+    
+    CATransition *tran = [CATransition animation];
+    tran.duration =1;
+    tran.type =@"suckEffect";
+//    tran.type = kCATransitionMoveIn;
+    tran.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]; /* 动画的开始与结束的快慢*/
+    //@"cube" @"moveIn" @"reveal" @"fade"(default) @"pageCurl" @"pageUnCurl" @"suckEffect" @"rippleEffect" @"oglFlip"@"cameraIrisHollowOpen"@"cameraIrisHollowClose"
+    tran.subtype =kCATransitionFromRight;
+    [self.navigationController.view.layer addAnimation:tran forKey:nil];
+}
+
+//按钮的点击时间，实现push动画效果
+- (void)pushToDetail{
+    [self transitionPush];
+    GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
+//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (KLCoverView *)mask
