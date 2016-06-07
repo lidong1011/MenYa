@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "201D7DFA1B5B8EEB009117E2"
-               BuildableName = "&#x5782;&#x624b;&#x5c0f;&#x7ad9;.app"
+               BuildableName = "MenYa.app"
                BlueprintName = "MenYa"
                ReferencedContainer = "container:MenYa.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "201D7DFA1B5B8EEB009117E2"
-            BuildableName = "&#x5782;&#x624b;&#x5c0f;&#x7ad9;.app"
+            BuildableName = "MenYa.app"
             BlueprintName = "MenYa"
             ReferencedContainer = "container:MenYa.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "201D7DFA1B5B8EEB009117E2"
-            BuildableName = "&#x5782;&#x624b;&#x5c0f;&#x7ad9;.app"
+            BuildableName = "MenYa.app"
             BlueprintName = "MenYa"
             ReferencedContainer = "container:MenYa.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "201D7DFA1B5B8EEB009117E2"
-            BuildableName = "&#x5782;&#x624b;&#x5c0f;&#x7ad9;.app"
+            BuildableName = "MenYa.app"
             BlueprintName = "MenYa"
             ReferencedContainer = "container:MenYa.xcodeproj">
          </BuildableReference>
