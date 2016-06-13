@@ -123,7 +123,7 @@
 //            vc = [[MyMsgViewController alloc]init];
 //            [self.mm_drawerController.centerViewController presentViewController:nvc animated:YES completion:nil];
 //            [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-//            return;
+            return;
 //            [self.navigationController pushViewController:vc animated:YES];
             break;
         }

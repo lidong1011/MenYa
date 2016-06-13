@@ -1230,7 +1230,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
         [self animateShow];
     }
     //预览图出现
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:[kUrl stringByAppendingPathComponent:_endImgUrl]] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
+    NSString *path = [kPicUrl stringByAppendingPathComponent:_endImgUrl];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
     _imageView.hidden = NO;
 }
 
@@ -1711,6 +1712,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         [self addSubview:_imageView];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.leading.trailing.bottom.equalTo(self);
         }];
@@ -1722,7 +1724,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 - (void)setImageBeginUrl:(NSString *)beginUrl endImgUrl:(NSString *)endUrl
 {
     _beginImgUrl = beginUrl;
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:[kUrl stringByAppendingPathComponent:_beginImgUrl]] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:[kPicUrl stringByAppendingPathComponent:_beginImgUrl]] placeholderImage:[UIImage imageNamed:@"pic-googs-bg.jpg"]];
     _imageView.hidden = NO;
     _endImgUrl = endUrl;
 }

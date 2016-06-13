@@ -113,17 +113,17 @@ alert.tag = tag; \
 //////接口//////
 
 //测试
-#define kUrl @"http://app.menyaer.com/index.php/"
+#define kUrl @"http://app.menyaer.com/"
 
 //生产
 //#define kUrl  @"csxz.jrcad.com:8080/phpmyadmin/"
 
 
-#define kBaseUrl  [kUrl stringByAppendingString:@"Api/"]
+#define kBaseUrl  [kUrl stringByAppendingString:@"index.php/Api/"]
 
 //获取图片
-#define kPicUrl  [kUrl stringByAppendingString:@"admin/data/upload/"]
-
+//#define kPicUrl  [kUrl stringByAppendingString:@"http://www.menyaer.com/"]
+#define kPicUrl  @"http://www.menyaer.com/"
 
 ////////////个人中心/////////////////
 //注册 User/register
@@ -133,7 +133,10 @@ alert.tag = tag; \
 #define kloginUrl  @"User/login"
 
 //获取验证码 Sms/sendVerifyCode
-#define ksendVerifyCode  @"Sms/sendVerifyCode"
+#define ksendVerifyCode  @"Sms/sendVerifyCode" /*sign：短信sign标示（register：注册，smslogin：短信登录，forgetpwd：找回密码）
+phone:手机号码
+*修改手机号码接口传递forgetpwd
+*/
 
 //验证验证码 Api/Sms/checkVerifyCode
 #define kcheckVerifyCode  @"Sms/checkVerifyCode"
@@ -150,7 +153,10 @@ alert.tag = tag; \
 //快捷登录 User/loginQuick
 #define kloginQuick  @"User/loginQuick"
 
+//找回密码 User/revivePassword
+#define krevivePassword  @"User/revivePassword"
+
 //首页视频列表 Video/getList
-//#define kVideogetList  @"Video/getList"
+#define kVideogetList  @"Video/getList"
 
 #endif

@@ -11,4 +11,5 @@
 @interface ShowActView : UIView
 COPY_NONATOMIC_PROPERTY NSArray *datas;
 COPY_NONATOMIC_PROPERTY void (^didClick)(ShowActView *,NSInteger);
+- (void)showOrHiddenWithAnim;
 @end

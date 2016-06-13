@@ -27,7 +27,7 @@
 - (IBAction)yanZhengMaAction:(UIButton *)sender
 {
     if (![self isValidatePhone:_phoneTF.text]) {
-        [SVProgressHUD showErrorWithStatus:@"手机号码不对"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码不对"];
         return;
     }
     
@@ -133,7 +133,7 @@
 - (IBAction)nextAction:(UIButton *)sender
 {
     if (![self isValidatePhone:_phoneTF.text]) {
-        [SVProgressHUD showErrorWithStatus:@"手机号码不对"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码不对"];
         return;
     }
     if (![_yanZhengMa isEqualToString:_yanZhengMTF.text])

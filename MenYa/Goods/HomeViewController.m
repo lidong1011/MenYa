@@ -21,6 +21,7 @@
 #import "HomeVideoModel.h"
 #import "GoodsDetailViewController.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *defaultImg;
 STRONG_NONATOMIC_PROPERTY NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet ShowActView *showActView;
 @property (weak, nonatomic) IBOutlet UIButton *addShopCart;
@@ -75,7 +76,9 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self pausePlayer:NO];
+    if (self.mm_drawerController.openSide == MMDrawerSideNone) {
+        [self pausePlayer:NO];
+    }
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -84,7 +87,6 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
     [super viewDidDisappear:animated];
     [self pausePlayer:YES];
     self.navigationController.navigationBarHidden = NO;
-
 }
 
 //获取列表数据
@@ -96,7 +98,6 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setObject:[NSString stringWithFormat:@"%d",_pageNo] forKey:@"page"];
     [parameter setObject:@"5" forKey:@"size"];
-    
     [NetworkDataClient getDataWithUrl:kVideogetList parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         [self getDataSuccess:JSON];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -125,6 +126,13 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         {
             NSDictionary *dataDic = array[i];
             [_dataSource addObject:[HomeVideoModel messageWithDict:dataDic]];
+        }
+        if (_dataSource.count == 0) {
+            _defaultImg.hidden = NO;
+        }
+        else
+        {
+            _defaultImg.hidden = YES;
         }
         [_tableView reloadData];
     }
@@ -289,7 +297,8 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
     _beforePoint = offset;
     NSIndexPath *indexPath = [_tableView indexPathForRowAtPoint:offset];
     HomeVideoModel *model = _dataSource[indexPath.row];
-    NSString *price = [NSString stringWithFormat:@"￥%.2f I 加入购物车",[model.SkuPrice floatValue]];
+    _showActView.hidden = YES;
+    NSString *price = [NSString stringWithFormat:@"￥%.2f l 加入购物车",[model.SkuPrice floatValue]];
     [_addShopCart setTitle:price forState:UIControlStateNormal];
     HomePlayerCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
     WS(weakSelf);
@@ -361,8 +370,14 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
         case 4:
         {
             //other 操作
-            _showActView.datas = @[@{@"icon":@"icon-comment",@"num":@0},@{@"icon":@"icon-share",@"num":@0},@{@"icon":@"icon-keep",@"num":@0},@{@"icon":@"icon-favor",@"num":@10}];
-            _showActView.hidden = !_showActView.hidden;
+            
+            if (!_showActView.hidden) {
+                [_showActView showOrHiddenWithAnim];
+            }
+            else
+            {
+                _showActView.datas = @[@{@"icon":@"icon-comment",@"num":@0},@{@"icon":@"icon-share",@"num":@0},@{@"icon":@"icon-keep",@"num":@0},@{@"icon":@"icon-favor",@"num":@10}];
+            }
             WS(ws);
             _showActView.didClick = ^(ShowActView *showView,NSInteger index){
                 _zanFlag = index;
@@ -591,7 +606,7 @@ STRONG_NONATOMIC_PROPERTY CADisplayLink *displayLink;
 
 - (void)handleAction:(CADisplayLink *)displayLink{
     
-    UIImage *image = [UIImage imageNamed:@"icon-favor"];
+    UIImage *image = [UIImage imageNamed:@"icon-zan"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     CGFloat scale = arc4random_uniform(60) / 40.0;
     imageView.transform = CGAffineTransformMakeScale(scale, scale);

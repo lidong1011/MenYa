@@ -11,9 +11,12 @@
 
 #define ITEM_W 40
 #define ITEM_H 40
+#define ANIMATEDURI 0.033
 @interface ShowActView ()
+STRONG_NONATOMIC_PROPERTY UIImageView *backgroundImg;
 STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
-
+STRONG_NONATOMIC_PROPERTY NSMutableArray *outImgs;
+STRONG_NONATOMIC_PROPERTY NSMutableArray *inImgs;
 
 @end
 
@@ -40,6 +43,16 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
 - (void)initData
 {
     _items = [NSMutableArray array];
+    _outImgs = [NSMutableArray array];
+    _inImgs = [NSMutableArray array];
+    for (NSInteger i = 0; i < 81; i++) {
+        NSString *imgName = [NSString stringWithFormat:@"homePop_0%02ld.png",i];
+        if (i<60) {
+            [_outImgs addObject:[UIImage imageNamed:imgName]];
+        }else{
+            [_inImgs addObject:[UIImage imageNamed:imgName]];
+        }
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -59,28 +72,24 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
     }
     _datas = datas;
     NSInteger count = datas.count;
-    CGFloat itemH = self.height/count;
+    CGFloat itemH = (self.height-150)/count;
     //背景
-    UIImageView *background = [[UIImageView alloc]init];
-    background.frame = CGRectMake(0, count*itemH, self.width, self.height);
-    [UIView animateWithDuration:ANIMATE_DURATION animations:^{
-        background.frame = CGRectMake(0, 0, self.width, self.height);
-    } completion:^(BOOL finished) {
-        //
-    }];
-
-    background.image = [UIImage imageNamed:@"icon-more-bg.png"];
-    [self addSubview:background];
+    _backgroundImg = [[UIImageView alloc]init];
+    _backgroundImg.frame = CGRectMake(0, 0, self.width, self.height);
+    _backgroundImg.image = [UIImage imageNamed:@"homePop_059.png"];
+    [self showOrHiddenWithAnim];
+    
+    [self addSubview:_backgroundImg];
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
     scrollView.scrollEnabled = NO;
     [self addSubview:scrollView];
     
     for (NSInteger i = 0; i < count; i++) {
         NSDictionary *dic = datas[i];
-        ShowItemBtn *btn = [[ShowItemBtn alloc]initWithFrame:CGRectMake(0, count*itemH, self.width, itemH)];
+        ShowItemBtn *btn = [[ShowItemBtn alloc]initWithFrame:CGRectMake(0, self.height, self.width, itemH)];
 //        btn.backgroundColor = [UIColor redColor];
         [UIView animateWithDuration:ANIMATE_DURATION animations:^{
-            btn.frame = CGRectMake(0, i*itemH, self.width, itemH);
+            btn.frame = CGRectMake(0, 109+i*itemH, self.width, itemH);
         } completion:^(BOOL finished) {
             //
         }];
@@ -91,6 +100,45 @@ STRONG_NONATOMIC_PROPERTY NSMutableArray *items;
         [scrollView addSubview:btn];
         [_items addObject:btn];
     }
+}
+
+- (void)showOrHiddenWithAnim
+{
+    if (self.hidden) {
+        self.hidden = NO;
+        _backgroundImg.animationImages = _outImgs;
+        _backgroundImg.animationDuration = _outImgs.count*ANIMATEDURI;
+        _backgroundImg.animationRepeatCount = 1;
+        [_backgroundImg startAnimating];
+    }
+    else
+    {
+        _backgroundImg.animationImages = _inImgs;
+        _backgroundImg.animationDuration = _inImgs.count*ANIMATEDURI;
+        _backgroundImg.animationRepeatCount = 1;
+        _backgroundImg.image = [UIImage imageNamed:@"homePop_080.png"];
+        [_backgroundImg startAnimating];
+        [self performSelector:@selector(itemAnimHidden) withObject:nil afterDelay:13*ANIMATEDURI];
+        [self performSelector:@selector(hiddenBackImag) withObject:nil afterDelay:_backgroundImg.animationDuration];
+    }
+}
+
+- (void)itemAnimHidden
+{
+    for (NSInteger i = 0; i < _items.count; i++) {
+        ShowItemBtn *btn = _items[i];
+        //        btn.backgroundColor = [UIColor redColor];
+        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+            btn.frame = CGRectMake(0, self.height, self.width, 30);
+        } completion:^(BOOL finished) {
+            //
+        }];
+    }
+}
+
+- (void)hiddenBackImag
+{
+    self.hidden = YES;
 }
 
 - (void)didTouch:(UIButton *)sender

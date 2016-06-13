@@ -28,6 +28,11 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"找回密码";
+    
+    [_phoneTF setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_yanZhengMTF setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_paswordTF setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_comfirePwdTF setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 - (IBAction)yanZhengMaAction:(UIButton *)sender
@@ -42,12 +47,13 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(returnYanCode) userInfo:nil repeats:YES];
     
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_phoneTF.text forKey:@"to"];
-    [NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [parameter setObject:_phoneTF.text forKey:@"phone"];
+    [parameter setObject:@"forgetpwd" forKey:@"sign"];
+    [NetworkDataClient getDataWithUrl:ksendVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         NSDictionary *dic = (NSDictionary *)JSON;
-        if ([dic[@"code"] integerValue]==1) {
+        if ([dic[kJson_Status] integerValue]==1) {
             [SVProgressHUD showSuccessWithStatus:@"发送请求成功"];
-            _yanZhengMa = dic[@"sms_code"];
+            
         }
         else
         {
@@ -72,11 +78,46 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
     [self.yanZhengBtn setTitle:string forState:UIControlStateDisabled];
 }
 
+#pragma mark - 校验验证码
+- (void)checkCodeRequest
+{
+//    [SVProgressHUD showWithStatus:@"正在找回..."];
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setObject:_phoneTF.text forKey:@"phone"];
+    [parameter setObject:_yanZhengMTF.text forKey:@"code"];
+    [parameter setObject:@"forgetpwd" forKey:@"sign"];
+    [NetworkDataClient getDataWithUrl:kcheckVerifyCode parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+        [self checkCodeSuccess:JSON];
+        MyLog(@"%@",JSON);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        //
+    }];
+    
+}
+
+#pragma mark - 校验验证码请求返回数据
+- (void)checkCodeSuccess:(id)response
+{
+    //    [SVProgressHUD dismiss];
+    NSDictionary *dic = (NSDictionary *)response;
+    MyLog(@"%@",dic);
+    if ([dic[kJson_Status] intValue]==1)
+    {
+        [self setStep:++_step];
+        //        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [SVProgressHUD showInfoWithStatus:dic[@"message"]];
+    }
+}
+
 - (IBAction)getPswAction:(id)sender
 {
     if (_step == 0) {
         if (![self isValidatePhone:_phoneTF.text]) {
-            [SVProgressHUD showErrorWithStatus:@"手机号码不对"];
+            [SVProgressHUD showInfoWithStatus:@"手机号码不对"];
             return;
         }
         if (![_yanZhengMa isEqualToString:_yanZhengMTF.text])
@@ -84,7 +125,7 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
             [SVProgressHUD showInfoWithStatus:@"验证码输入有误"];
             return;
         }
-        [self setStep:_step++];
+        [self setStep:++_step];
         return;
     }
     else if (_step == 1)
@@ -99,17 +140,17 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
     }
 }
 
+
 #pragma mark - 请求
 - (void)getPsdRequest
 {
     [SVProgressHUD showWithStatus:@"正在找回..."];
     
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_phoneTF.text forKey:@"tel"];
+    [parameter setObject:_phoneTF.text forKey:@"phone"];
     [parameter setObject:_paswordTF.text forKey:@"password"];
-    [parameter setObject:_comfirePwdTF.text forKey:@"confirm_password"];
-    [parameter setObject:@(1) forKey:@"usertype"]; //1消费 2柜长 3供应
-    [NetworkDataClient postDataWithUrl:kBaseUrl parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
+    [parameter setObject:_comfirePwdTF.text forKey:@"repassword"];
+    [NetworkDataClient postDataWithUrl:krevivePassword parameters:parameter success:^(NSURLSessionDataTask *task, id JSON) {
         [self success:JSON];
         MyLog(@"%@",JSON);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -124,14 +165,14 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
     //    [SVProgressHUD dismiss];
     NSDictionary *dic = (NSDictionary *)response;
     MyLog(@"%@",dic);
-    if ([dic[@"code"] intValue]==1)
+    if ([dic[kJson_Status] intValue]==1)
     {
         [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"成功找回"];
         User *user = [[User alloc]init];
         user.username = _phoneTF.text;
         user.password = _paswordTF.text;
         [AccountManager shareManager].user = user;
-        [self setStep:_step++];
+        [self setStep:++_step];
 //        [self.navigationController popViewControllerAnimated:YES];
     }
     else
@@ -150,6 +191,15 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
         }
     }
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField == _yanZhengMTF) {
+        if (_yanZhengMTF.text.length >=4) {
+            [self checkCodeRequest];
+        }
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -184,6 +234,10 @@ ASSIGN_NONATOMIC_PROPERTY NSInteger step;
             [self.navigationController popViewControllerAnimated:YES];
         });
     }
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

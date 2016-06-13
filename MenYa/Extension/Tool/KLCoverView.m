@@ -8,7 +8,7 @@
 
 #import "KLCoverView.h"
 
-#define kAlpha 0.85
+#define kAlpha 0.75
 @implementation KLCoverView
 
 - (id)initWithFrame:(CGRect)frame
